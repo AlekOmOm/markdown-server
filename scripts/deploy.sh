@@ -177,6 +177,7 @@ if ! docker-compose up -d; then
     -e APP_ENV=${APP_ENV} \
     -e APP_NAME=${APP_NAME} \
     -e APP_VERSION=${APP_VERSION} \
+    -e NODE_SERVER_PATH=${NODE_SERVER_PATH} \
     ${DOCKER_REGISTRY}/${IMAGE_NAME}:${TAG}
 fi
 
