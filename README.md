@@ -1,6 +1,8 @@
-i'll create a simple static web app for serving markdown files using node.js. this solution will parse markdown files and render them as html.
 
-here's a simple static web app for serving markdown files using node.js:
+# simple static web app for serving markdown files 
+
+-> parsing .md as .html
+
 
 ### how it works
 
