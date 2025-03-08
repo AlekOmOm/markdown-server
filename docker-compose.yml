@@ -13,6 +13,8 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+    networks:
+      - app_network
    labels:
       - "deployment.environment=${APP_ENV}"
       - "deployment.date=${DEPLOYMENT_DATE}"
@@ -20,4 +22,7 @@ services:
       - "app.name=${APP_NAME}"
       - "app.version=${APP_VERSION}"
 
-
+networks:
+  app_network:
+    name: ${APP_NAME}_${APP_ENV}_network
+    driver: bridge
