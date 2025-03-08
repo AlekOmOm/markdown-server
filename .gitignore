@@ -1,6 +1,7 @@
-# content files
-
-content/*.md
+# content
+content/
+./content/*.md
+./content/*
 
 # Logs
 logs
