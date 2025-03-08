@@ -1,0 +1,12 @@
+markdown-server/
+├── app.js          # main server file
+├── content/        # markdown files stored here
+│   ├── sample1.md
+│   └── sample2.md
+├── public/         # static assets
+│   └── css/
+│       └── style.css
+├── views/          # ejs templates
+│   ├── content.ejs # template for displaying markdown
+│   └── index.ejs   # template for file listing
+└── package.json    # project configuration

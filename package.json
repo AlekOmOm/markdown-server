@@ -1,0 +1,26 @@
+{
+  "name": "markdown-server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A simple static web app for serving markdown files",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [
+    "markdown",
+    "static",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "marked": "^5.1.2",
+    "path": "^0.12.7"
+  }
+}
