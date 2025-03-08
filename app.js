@@ -43,6 +43,12 @@ app.get('/file/:name', (req, res) => {
     const name = req.params.name;
     const filePath = path.resolve(`./content/${name}`);
 
+    console.log(`Reading file ${name}`);
+    console.log(`File path: ${filePath}`);
+    console.log(`File exists: ${fs.existsSync(filePath)}`);
+    console.log(`Path of content directory: ${path.resolve('./content')}`);
+    console.log(`Content of directory: ${fs.readdirSync(path.resolve('./content'))}`);
+
     // read 
     fs.readFile(filePath, 'utf-8', (err, content) => {
         if (err) {
