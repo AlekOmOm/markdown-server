@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 // --- Middleware ---
 app.use(express.static(path.resolve('./public')));
+app.use(express.json());
 
 // view engine
 app.set('view engine', 'ejs');
@@ -21,6 +22,40 @@ app.set('views', path.resolve('./views'));
 
 
 // --- Routes ---
+
+// API endpoints for processing .md and returning HTML
+ /* receives a JSON object 
+  * {
+  *   "title": "string",
+  *   "content": "string"
+  * }
+  */
+
+app.get('/api/', async (req, res) => {
+
+    const { title, content } = await req.body;
+    
+    if (!title || !content) {
+        res.status(400).send('Title and content required');
+        return;
+    }
+
+    const htmlContent = marked.parse(content, {
+        mangle: false,
+        headerIds: false
+    });
+
+    res.status(200).send({ title, content: htmlContent });
+
+});
+
+
+
+
+
+
+
+// --- Basic Routes for localhosting from content/ dir ---
 
 // Home
 app.get('/', (req, res) => {
@@ -55,6 +90,13 @@ app.get('/content/:name', (req, res) => {
         return;
     }
 
+    processHTML(req, res, name, filePath);
+
+});
+
+// read file 
+function processHTML(req, res, name, filePath) {
+
 	// read
     try {
         fs.readFile(filePath, 'utf-8', (err, content) => {
@@ -80,8 +122,8 @@ app.get('/content/:name', (req, res) => {
         console.error(error);
         res.status(500).send(`Error reading file ${name}`);
     }
-});
 
+}
 
 
 
