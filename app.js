@@ -3,23 +3,22 @@ import fs from 'fs';
 import path from 'path';
 import { marked } from 'marked';
 import dotenv from 'dotenv';
-dotenv.config();
+
+dotenv.config({ path: path.resolve('./config/.env') });
 const app = express();
 
+
+// --- Configuration ---
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = process.env.PORT || 5000;
 
+// --- Middleware ---
 app.use(express.static(path.resolve('./public')));
 
 // view engine
 app.set('view engine', 'ejs');
 app.set('views', path.resolve('./views'));
 
-const data = {
-	title: 'Hello World',
-	stuff: 'This is a simple example of a template using EJS',
-	content: 'This is a simple example of a template using EJS',
-};
 
 // --- Routes ---
 
