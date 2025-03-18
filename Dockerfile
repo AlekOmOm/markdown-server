@@ -1,5 +1,5 @@
 # Use Node.js as base image
-ARG NODE_VERSION=lts
+ARG NODE_VERSION=22
 ARG NODE_VERSION_TAG=slim
 FROM node:${NODE_VERSION}-${NODE_VERSION_TAG}
 
@@ -30,4 +30,4 @@ HEALTHCHECK --interval=30s --timeout=5s --retries=3 \
   CMD curl -f http://localhost:${PORT}/ || exit 1
 
 # Run the application
-CMD ["node", "${NODE_SERVER_PATH}"]
+CMD ["npm", "run", "start"]
